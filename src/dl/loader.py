@@ -1,4 +1,4 @@
-from torch.utils.data import dataset
+from torch.utils.data import dataset, random_split
 from torchvision.transforms import transforms
 from src.utils.data import getPatchPandas
 from PIL import Image
@@ -28,4 +28,11 @@ class PatchDataset(dataset.Dataset):
 
     def __len__(self):
         return len(self.data)
-    
+
+def splitDataset(fold_size, fold_num, dataset):
+    test_size = len(dataset) - fold_num * fold_size
+    n_fold_size = len(dataset) - test_size
+    folds_dataset, test_dataset = random_split(dataset, [n_fold_size, test_size], torch.manual_seed(1))
+    size_list = [fold_size] * fold_num
+    fold_datasets = list(random_split(folds_dataset, size_list, torch.manual_seed(1)))
+    return fold_datasets, test_dataset
