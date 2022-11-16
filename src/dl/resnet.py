@@ -7,7 +7,7 @@ class ModifiedResNet18(nn.Module):
     def __init__(self):
         super(ModifiedResNet18, self).__init__()
         #self.resnet = models.resnet18(weights='ResNet18_Weights.IMAGENET1K_V1')
-        self.resnet = models.resnet18()
+        self.resnet = models.resnet50(weights='ResNet50_Weights.IMAGENET1K_V1')
         self.fc = nn.Linear(1000, 1)
         self.relu = nn.ReLU()
         
