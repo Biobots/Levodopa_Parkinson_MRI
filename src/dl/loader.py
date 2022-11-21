@@ -1,7 +1,9 @@
 from torch.utils.data import dataset, Subset, random_split
 from torchvision.transforms import transforms
-from src.utils.data import getPatchPandas
+from src.utils.data import getPatchPandas, getBlockPandas
 from PIL import Image
+from scipy import ndimage
+import numpy as np
 import torch
 import random
 
@@ -58,6 +60,28 @@ class PermutePatchDataset(dataset.Dataset):
     
     def permute(self):
         random.shuffle(self.score_data)
+        
+class BlockDataset(dataset.Dataset):
+    def __init__(self):
+        super(BlockDataset, self).__init__()
+        self.data = getBlockPandas()
+        self.score_data = list(self.data["SCORE"])
+        self.age_data = list(self.data["AGE_AT_VISIT"] / 100)
+        self.sex_data = list(self.data["SEX"])
+        self.duration_data = list(self.data["DURATION"] / 100)
+        self.tiv_data = list(self.data["TIV"] / 1000)
+        self.img_path = list(self.data["BLOCK_PATH"])
+
+    def __getitem__(self, index):
+        score = self.score_data[index]
+        img = np.load(self.img_path[index])
+        #img = ndimage.zoom(img, [32, 32, 32])
+        img = torch.FloatTensor(img[np.newaxis, :])
+        labels = torch.FloatTensor([self.age_data[index], self.sex_data[index], self.duration_data[index], self.tiv_data[index]])
+        return img, labels, score
+
+    def __len__(self):
+        return len(self.data)
 
 def splitDataset(fold_size, fold_num, dataset):
     test_size = len(dataset) - fold_num * fold_size

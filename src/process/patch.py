@@ -2,32 +2,8 @@ import numpy as np
 import os
 import os.path
 import matplotlib.pyplot as plt
-import nilearn as nil
 import nibabel as nib
-from utils.data import getConfigs, getDataPandas, getMeta
-
-def calMaskCoords():
-    configs = getConfigs()
-    thalamus_mask = configs['thalamus_mask']
-    p_value_map_path = os.path.join(configs['spm_path'], 'TFCE_log_pFWE_0001.nii')
-    
-    p_data = nil.image.get_data(p_value_map_path)
-    p_data[np.isnan(p_data)] = 0
-    p_data[p_data < -np.log10(0.05)] = 0
-    
-    roi_img = nil.image.load_img(thalamus_mask)
-    roi = nil.image.get_data(roi_img)
-    roi = np.pad(roi, ((27,27),(47,47),(41,41)))
-    p_roi = np.logical_and(p_data, roi)
-    
-    coordslist = []
-    for x in range(113):
-        for y in range(137):
-            for z in range(113):
-                if p_roi[x,y,z] == True:
-                    coordslist.append((x,y,z))
-                    
-    return coordslist
+from src.utils.data import writeData, getDataPandas, getMeta, writePatch
 
 def generatePatch():
     meta = getMeta()
@@ -62,3 +38,7 @@ def generatePatch():
             idx += 1
         reconstruct_list_list.append(reconstruct_list)
     data['PATCH_PATH'] = reconstruct_list_list
+    writeData(data.to_dict(orient='records'))
+    
+    data = data.explode('PATCH_PATH').reset_index(drop=True)[['PATNO', 'EVENT_ID', 'SCORE', 'AGE_AT_VISIT', 'SEX', 'DURATION', 'TIV', 'PATCH_PATH']]
+    writePatch(data.to_dict(orient='records'))
