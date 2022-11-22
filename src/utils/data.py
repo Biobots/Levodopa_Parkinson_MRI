@@ -5,8 +5,16 @@ import pandas as pd
 import nilearn as nil
 import numpy as np
 
+def getPandas(name):
+    data = pd.read_json(os.path.join('data', 'json', name+'.json'))
+    return data
+
 def getDataPandas():
     data = pd.read_json(os.path.join('data', 'json', 'data.json'))
+    return data
+
+def getDataTagPandas(tag):
+    data = pd.read_json(os.path.join('data', 'json', 'data_'+tag+'.json'))
     return data
 
 def getPatchPandas():
@@ -27,17 +35,40 @@ def getConfigs():
         data = json.load(f)
         return data
     
+def writePandas(name, data):
+    data = data.to_dict(orient='records')
+    with open(os.path.join('data', 'json', name+'.json'), 'w+', encoding="utf-8") as f:
+        json.dump(data, f, ensure_ascii=False, indent=4)
+    
 def writeData(data):
     with open(os.path.join('data', 'json', 'data.json'), 'w+', encoding="utf-8") as f:
         json.dump(data, f, ensure_ascii=False, indent=4)
         
-def writePatch(data):
-    with open(os.path.join('data', 'json', 'patch.json'), 'w+', encoding="utf-8") as f:
+def writePatch(data, tag):
+    with open(os.path.join('data', 'json', 'patch_'+tag+'.json'), 'w+', encoding="utf-8") as f:
         json.dump(data, f, ensure_ascii=False, indent=4)
         
-def writeBlock(data):
-    with open(os.path.join('data', 'json', 'block.json'), 'w+', encoding="utf-8") as f:
+def writeBlock(data, tag):
+    with open(os.path.join('data', 'json', 'block_'+tag+'.json'), 'w+', encoding="utf-8") as f:
         json.dump(data, f, ensure_ascii=False, indent=4)
+        
+def splitTestByRatio(name, ratio=0.2):
+    data = getPandas(name)
+    test = data.sample(frac=ratio, random_state=10)
+    train = data.drop(test.index)
+    test = test.reset_index(drop=True)
+    train = train.reset_index(drop=True)
+    writePandas(name+'_test', test)
+    writePandas(name+'_train', train)
+    
+def splitTestByLen(name, num=1000):
+    data = getPandas(name)
+    test = data.sample(n=num, random_state=10)
+    train = data.drop(test.index)
+    test = test.reset_index(drop=True)
+    train = train.reset_index(drop=True)
+    writePandas(name+'_test', test)
+    writePandas(name+'_train', train)
     
 def calMaskCoords():
     configs = getConfigs()

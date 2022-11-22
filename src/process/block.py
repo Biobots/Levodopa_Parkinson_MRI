@@ -2,7 +2,7 @@ import numpy as np
 import os
 import os.path
 import nibabel as nib
-from src.utils.data import writeData, getDataPandas, getMeta, writeBlock
+from src.utils.data import writeData, getDataPandas, getMeta, writeBlock, getDataTagPandas
 
 def generateBlock():
     meta = getMeta()
@@ -26,12 +26,12 @@ def generateBlock():
         
     writeData(data.to_dict(orient='records'))
     
-def expandBlock():
+def expandBlock(tag):
     meta = getMeta()
     coords = meta['img_config']['thalamus_voxel_coords']
     offsets = meta['img_config']['offsets']
     
-    data = getDataPandas()
+    data = getDataTagPandas(tag)
     
     gmlist = data['GM_PATH']
     reconstruct_list_list = []
@@ -54,4 +54,4 @@ def expandBlock():
     writeData(data.to_dict(orient='records'))
     
     data = data.explode('BLOCK_PATH').reset_index(drop=True)[['PATNO', 'EVENT_ID', 'SCORE', 'AGE_AT_VISIT', 'SEX', 'DURATION', 'TIV', 'BLOCK_PATH']]
-    writeBlock(data.to_dict(orient='records'))
+    writeBlock(data.to_dict(orient='records'), tag)

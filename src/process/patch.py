@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 import nibabel as nib
 from src.utils.data import writeData, getDataPandas, getMeta, writePatch
 
-def generatePatch():
+def generatePatch(tag):
     meta = getMeta()
     coords = meta['img_config']['thalamus_voxel_coords']
     offsets = meta['img_config']['offsets']
@@ -41,4 +41,4 @@ def generatePatch():
     writeData(data.to_dict(orient='records'))
     
     data = data.explode('PATCH_PATH').reset_index(drop=True)[['PATNO', 'EVENT_ID', 'SCORE', 'AGE_AT_VISIT', 'SEX', 'DURATION', 'TIV', 'PATCH_PATH']]
-    writePatch(data.to_dict(orient='records'))
+    writePatch(data.to_dict(orient='records'), tag)
