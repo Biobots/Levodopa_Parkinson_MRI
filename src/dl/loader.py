@@ -55,7 +55,7 @@ class BlockRegressDataset(dataset.Dataset):
     
     
 class BlockClassifyDataset(dataset.Dataset):
-    def __init__(self, tag, bounds, fold_num):
+    def __init__(self, tag, bounds):
         super(BlockClassifyDataset, self).__init__()
         #kf = KFold(n_splits=fold_num, shuffle=True, random_state=10)
         self.data = getPandas('data_'+tag)
