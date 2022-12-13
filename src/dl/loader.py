@@ -34,7 +34,8 @@ class PatchRedressDataset(dataset.Dataset):
 class BlockRegressDataset(dataset.Dataset):
     def __init__(self, tag):
         super(BlockRegressDataset, self).__init__()
-        self.data = getPandas('block_'+tag)
+        self.data = getPandas('data_'+tag)
+        self.data = self.data.explode('BLOCK_PATH').reset_index(drop=True)[['PATNO', 'EVENT_ID', 'SCORE', 'AGE_AT_VISIT', 'SEX', 'DURATION', 'TIV', 'BLOCK_PATH']]
         self.score_data = list(self.data["SCORE"])
         self.age_data = list(self.data["AGE_AT_VISIT"] / 100)
         self.sex_data = list(self.data["SEX"])
