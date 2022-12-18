@@ -42,3 +42,10 @@ class ClassifyResNet3d(nn.Module):
         x = torch.cat((x, labels), dim=1)
         x = self.fc(x)
         return x
+    
+class RegressCNN(nn.Module):
+    def __init__(self):
+        super(RegressCNN, self).__init__()
+        
+    def forward(self, image, labels):
+        pass

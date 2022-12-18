@@ -4,6 +4,7 @@ import os.path
 import nibabel as nib
 from src.utils.data import writeData, getDataPandas, getMeta, writeBlock, getDataTagPandas
 
+# deprecated
 def generateBlock():
     meta = getMeta()
     coords = meta['img_config']['thalamus_voxel_coords']

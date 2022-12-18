@@ -4,6 +4,7 @@ from src.utils.data import getPandas
 from PIL import Image
 import numpy as np
 import torch
+import nibabel as nib
 from sklearn.model_selection import KFold
 
 class PatchRedressDataset(dataset.Dataset):
@@ -46,6 +47,28 @@ class BlockRegressDataset(dataset.Dataset):
     def __getitem__(self, index):
         score = self.score_data[index]
         img = np.load(self.img_path[index])
+        #img = ndimage.zoom(img, [32, 32, 32])
+        img = torch.FloatTensor(img[np.newaxis, :])
+        labels = torch.FloatTensor([self.age_data[index], self.sex_data[index], self.duration_data[index], self.tiv_data[index]])
+        return img, labels, score
+
+    def __len__(self):
+        return len(self.data)
+    
+class RegressDataset(dataset.Dataset):
+    def __init__(self, tag):
+        super(RegressDataset, self).__init__()
+        self.data = getPandas('data_'+tag)
+        self.score_data = list(self.data["SCORE"])
+        self.age_data = list(self.data["AGE_AT_VISIT"] / 100)
+        self.sex_data = list(self.data["SEX"])
+        self.duration_data = list(self.data["DURATION"] / 100)
+        self.tiv_data = list(self.data["TIV"] / 1000)
+        self.img_path = list(self.data["GM_PATH"])
+
+    def __getitem__(self, index):
+        score = self.score_data[index]
+        img = nib.load(self.img_path[index]).get_fdata()
         #img = ndimage.zoom(img, [32, 32, 32])
         img = torch.FloatTensor(img[np.newaxis, :])
         labels = torch.FloatTensor([self.age_data[index], self.sex_data[index], self.duration_data[index], self.tiv_data[index]])
