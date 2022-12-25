@@ -37,6 +37,7 @@ class BlockRegressDataset(dataset.Dataset):
         super(BlockRegressDataset, self).__init__()
         self.data = getPandas('data_'+tag)
         self.data = self.data.explode('BLOCK_PATH').reset_index(drop=True)[['PATNO', 'EVENT_ID', 'SCORE', 'AGE_AT_VISIT', 'SEX', 'DURATION', 'TIV', 'BLOCK_PATH']]
+        self.data = self.data.sample(frac=1).reset_index(drop=True)
         self.score_data = list(self.data["SCORE"])
         self.age_data = list(self.data["AGE_AT_VISIT"] / 100)
         self.sex_data = list(self.data["SEX"])
@@ -59,6 +60,7 @@ class RegressDataset(dataset.Dataset):
     def __init__(self, tag):
         super(RegressDataset, self).__init__()
         self.data = getPandas('data_'+tag)
+        self.data = self.data.sample(frac=1).reset_index(drop=True)
         self.score_data = list(self.data["SCORE"])
         self.age_data = list(self.data["AGE_AT_VISIT"] / 100)
         self.sex_data = list(self.data["SEX"])
@@ -68,6 +70,7 @@ class RegressDataset(dataset.Dataset):
 
     def __getitem__(self, index):
         score = self.score_data[index]
+        #113x137x113
         img = nib.load(self.img_path[index]).get_fdata()
         #img = ndimage.zoom(img, [32, 32, 32])
         img = torch.FloatTensor(img[np.newaxis, :])
@@ -84,6 +87,7 @@ class BlockClassifyDataset(dataset.Dataset):
         #kf = KFold(n_splits=fold_num, shuffle=True, random_state=10)
         self.data = getPandas('data_'+tag)
         self.data = self.data.explode('BLOCK_PATH').reset_index(drop=True)[['PATNO', 'EVENT_ID', 'SCORE', 'AGE_AT_VISIT', 'SEX', 'DURATION', 'TIV', 'BLOCK_PATH']]
+        self.data = self.data.sample(frac=1).reset_index(drop=True)
         self.score_data = list(self.data["SCORE"])
         self.age_data = list(self.data["AGE_AT_VISIT"] / 100)
         self.sex_data = list(self.data["SEX"])
