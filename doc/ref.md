@@ -1,10 +1,12 @@
+### Prediction
+
 1. [Levodopa responsiveness in Parkinson's disease: harnessing real-life experience with machine-learning analysis](https://doi.org/10.1007/s00702-022-02540-2)
-   1. 左旋多巴长期反应（LDR评估较复杂，但短期左旋多巴冲击试验有明确流程和评估方法）
+   1. 左旋多巴长期反应（LDR评估较复杂，但短期左旋多巴响应较简单）
    2. N=296
    3. Consecutive patients with PD attending the outpatient Movement Disorders Unit of Rabin Medical Center from 2000 to 2020 were retrospectively identified by file review
    4. 纳入了有长期随访数据（左旋多巴治疗前后数据）的患者；仅纳入特发性PD患者；排除在随访期间PD诊断发生改变的患者
    5. 采集用药前和用药3个月后的U3评分，改善率>30%为响应良好(N=128)
-   6. 白质高信号（没有提及获取方式，可能需要人工目测）(the analysis of the MRI findings was qualitative and not based on scales grading the degree of ischemic changes)
+   6. 白质高信号（没有提及获取方式，可能需要人工评估）(the analysis of the MRI findings was qualitative and not based on scales grading the degree of ischemic changes)
    7. 使用特征：用药前U3评分、用药后U3评分、性别、发病年龄（患者自行报告）、白质高信号、是否使用多巴胺受体激动剂、左旋多巴使用时长、种族、首发症状、运动前症状
    8. 回归分析：对各个变量独立地进行线性回归分析以确定各个变量的相关性，仅包括p<0.05的结果
       1. 女性、年轻时起病、早期使用多巴胺受体激动剂的患者响应较好
@@ -119,40 +121,203 @@
        6.  Demo_Clinic_T1_R2\*_Model: Demo_Clinic_Model+T1影像提取的特征+T2\*影像提取的特征
            1.  训练集R2=0.76，测试集R2=0.55
    5.  测试集R2最大0.65
-5. [Disentangling nigral and putaminal contribution to motor impairment and levodopa response in Parkinson's disease](https://doi.org/10.1038/s41531-022-00401-z)
+
+
+
+### Correlation
+
+1. [Disentangling nigral and putaminal contribution to motor impairment and levodopa response in Parkinson's disease](https://doi.org/10.1038/s41531-022-00401-z)
    1. PD108 HC35
+      1. (I) 108 consecutive patients with PD who underwent a routine MRI between 01/2018 and 02/2021 for the evaluation of advanced Parkinson therapies or for differential diagnosis and (II) 35 healthy age- and sex-matched controls
+      2. Retrospective
    2. DMI(diffusion microstructure imaging)
-   3. PD与HC在黑质、壳核存在显著差异
-   4. 黑质、壳核的微观结构完整性与左旋多巴响应相关（没有参考价值）
-6. [Levodopa responsiveness and white matter alterations in Parkinson's disease: A DTI-based study and brain network analysis: A cross-sectional study](https://doi.org/10.1002/brb3.2825)
-   1. N=54，PIGD PD，DTI+左旋多巴冲击试验
+   3. Voxel-based + ROI-based组间比较
+   4. PD与HC在黑质、壳核存在显著差异
+   5. 黑质、壳核的微观结构完整性与左旋多巴响应相关（没有参考价值）
+   6. ![](corr1.1.png)
+2. [Levodopa responsiveness and white matter alterations in Parkinson's disease: A DTI-based study and brain network analysis: A cross-sectional study](https://doi.org/10.1002/brb3.2825)
+   1. N=54，**PIGD PD**，DTI+左旋多巴冲击试验
       1. Recruited PIGD PD patients from the Department of Neurology, The Second Affiliated Hospital of Chongqing Medical University, China, from January 2017 to December 2020
    2. DTI
       1. Tract-based spatial statistics (TBSS), deterministic tracing (DT), region of interest (ROI) analysis, and automatic fiber identification (AFQ) analyses were performed.
    3. 根据改善率[**30%阈值**](https://doi.org/10.1002/mds.10123)分为两类
-   4. **PD亚型与患者对左旋多巴响应相关：PIGD响应差，白质损失更严重**
-   5. 响应较差组存在多区域尤其是胼胝体的**白质**损伤
-7. [Structural MRI substrate of long-duration response to levodopa in Parkinson's disease: an exploratory study](https://doi.org/10.1007/s00415-021-10550-5)
-   1. 左旋多巴长期反应
+   4. 独立样本t检验
+   5. voxelwise nonparametric permutation with TFCE correction
+   6. Introduction: **PD亚型与患者对左旋多巴响应相关：PIGD响应差，白质损失更严重**
+   7. 响应较差的PIGD PD患者存在多区域尤其是胼胝体的**白质**损伤
+   8. PD亚型与左旋多巴响应关联
+3. [Structural MRI substrate of long-duration response to levodopa in Parkinson's disease: an exploratory study](https://doi.org/10.1007/s00415-021-10550-5)
+   1. 左旋多巴长期反应 LDR
    2. N=24
+      1. Drug-naïve patients with a new diagnosis of idiopathic PD according to the diagnostic criteria of the UK Parkinson’s Disease Society Brain Bank were enrolled at the Neurologic Clinic of the “University Hospital” in Catania
    3. T1
-   4. ANOVA（症状主导侧与大脑半球，灰质密度与LDR）
+   4. ANOVA（分类型自变量：LDR+/-，症状主导侧对侧；数值型因变量：灰质密度）
+      1. Voxel-wise
+      2. ROI-based灰质密度图 (basal ganglia (caudate, putamen, pallidum), supplementary motor area, precentral gyrus, postcentral gyrus, superior, middle and inferior frontal gyri)
    5. 右侧运动症状主导的LDR+患者与左侧中央前回有显著关联，左侧运动症状主导的LDR+患者与右侧额中回有显著关联
-8. [Influence of white matter MRI hyper-intensities on acute l-dopa response in patients with Parkinson's disease](https://doi.org/10.1016/j.parkreldis.2016.01.017)
+      1. ![](corr3.1.png)
+      2. ![](corr3.2.png)
+   6. 根据症状主导侧对左右半球分别进行分析，提示潜在的预测特征（PPMI未提供数据）
+4. [Influence of white matter MRI hyper-intensities on acute l-dopa response in patients with Parkinson's disease](https://doi.org/10.1016/j.parkreldis.2016.01.017)
    1. N=60
-   2. white matter hyperintensities (WMH) 白质高信号
-   3. 左旋多巴响应与WMH相关
-9. [l-Dopa responsiveness is associated with distinctive connectivity patterns in advanced Parkinson's disease](https://doi.org/10.1002/mds.27017)
+      1. Between January 2012 and August 2014, a consecutive series of subjects with clinical parkinsonism from our outpatient Movement Disorders Clinic were prospectively recruited
+   2. WMH (white matter hyperintensities) 白质高信号
+      1. MRI影像数据在冲击试验后一年内采集
+      2. 两位神经放射学专家使用半定量量表评估WMH
+      3. WMH是PD的常见并发症
+      4. 指标包括总白质高信号评分(TWMH)，脑室周围空间病变评分(PV)，深部白质评分(DWM)，基底节评分(BG)，幕下空间评分(IT)
+   3. 其他数据
+      1. 评估时年龄，诊断时年龄，性别，ON/OFF状态U3评分（总分及6个子项）
+         1. 上下肢僵硬(Upper and lower limb rigidity)
+         2. 上下肢运动迟缓(Upper and lower limb bradykinesia)
+         3. 运动迟缓和僵硬(Bradykinesia and Rigidity of limbs)
+         4. 震颤(Tremor)
+         5. 步态障碍(Gait impairment)
+         6. 中轴损伤(Axial impairment)
+         7. ![](corr4.1.png)
+      2. 冲击试验阳性结果：U3评分改善超过30%（后续只使用了改善率）
+   4. 非参数 双变量 相关性：
+      1. 年龄数据与WMH指标
+         1. 评估年龄：PV: R=0.49 p < 0.001; DWM: R=0.31 p < 0.016; BG: R=0.25 p < 0.055; TWMH: R=0.43 p < 0.001
+         2. 诊断年龄：TWMH: R=0.31 p < 0.030
+      2. 年龄数据与U3评分
+         1. 评估年龄：Axial: R=0.30 p < 0.05
+         2. 诊断年龄：MDS-UPDRSIII: R=0.34 p < 0.028; Gait: R=0.40 p < 0.007; Axial: R=0.44 p < 0.003
+   5. 偏相关分析：年龄作为控制变量
+      1. DWM与axial: R=-0.35, p<0.027
+      2. ![](corr4.2.png)
+   6. Deep WMH were associated with worse response to L-Dopa for axial impairment
+      1. Worse performance on ratings for speech, facial expression, neck rigidity, rising from a chair, gait, freezing of gait, postural stability, posture and global spontaneous movements
+   7. 提示T2影像的作用
+5. [L-dopa responsiveness in early Parkinson's disease is associated with the rate of motor progression](https://doi.org/10.1016/j.parkreldis.2019.05.022)
+   1. N=1007
+      1. Tracking Parkinson's (a prospective observational multicenter study that has recruited from 72 centers in the United Kingdom (UK))
+      2. ![](corr5.1.png)
+      3. 18个月后随访
+
+   2. 特征: 
+      1. 人口统计学信息
+      2. 诊断特征？-> N=949
+      3. 用药史
+      4. UPDRS (U3分为ON/OFF)
+         1. MDS-UPDRS 3阈值24.5% definite/limited (与UPDRS 3阈值30%等价)
+
+      5. NMSS
+      6. REM睡眠行为障碍量表
+      7. SCOPA-AUT
+      8. [运动表型](https://doi.org/10.1002/mds.25383)
+      9. MoCA (经过受教育年限矫正)
+      10. 嗅觉减退
+      11. 情绪低落和抑郁 (LADS量表)
+      12. LEDD
+      13. 心血管风险/类风湿性关节炎
+
+   3. Logistic回归预测U3分组
+      1. 缺少数据填充：期望值/链式方程多重插补(multiple imputation chained equations approach)
+
+   4. 左旋多巴响应与baseline U3评分和18个月后评分变化率有关
+      1. Patients with lower responsiveness to L-dopa have higher motor scores, and faster motor progression
+      2. ![](corr5.2.png)
+
+6. [l-Dopa responsiveness is associated with distinctive connectivity patterns in advanced Parkinson's disease](https://doi.org/10.1002/mds.27017)
    1. N=19
    2. fMRI on state
    3. Seed-based regression analyses (基底节)
    4. 左旋多巴响应与基底节静息状态下功能连接模式相关
-10. [Which risk factors predict the levodopa response in fluctuating Parkinson's disease?](https://doi.org/10.1002/ana.410270514)
-   1. 1990
+   5. 无参考价值
+7. [Which risk factors predict the levodopa response in fluctuating Parkinson's disease?](https://doi.org/10.1002/ana.410270514)
+   1. 1990年
    2. N=39
-   3. 左旋多巴响应与PD病程和左旋多巴治疗时长显著相关
-11. [Natural history of motor symptoms in Parkinson's disease and the long-duration response to levodopa](https://doi.org/10.1093/brain/awaa181)
-    1. N=30，未经治疗
-    1. 年龄、发病年龄、体重、教育程度、病程、随访时长，U2 OFF，U3 OFF，U3 ON
-12. [Prediction of the Levodopa Challenge Test in Parkinson's Disease Using Data from a Wrist-Worn Sensor](https://doi.org/10.3390/s19235153)
-13. [Neurophysiological Predictors of Response to Medication in Parkinson's Disease](https://doi.org/10.3389/fneur.2021.763911)
+   3. 左旋多巴响应与PD病程和**左旋多巴治疗时长**显著相关
+8. [Prediction of the Levodopa Challenge Test in Parkinson's Disease Using Data from a Wrist-Worn Sensor](https://doi.org/10.3390/s19235153)
+   1. 偏向硬件，无参考价值
+9. [Neurophysiological Predictors of Response to Medication in Parkinson's Disease](https://doi.org/10.3389/fneur.2021.763911)
+   1. TMS (Transcranial magnetic stimulation)
+   2. 可能需要将LEDD(左旋多巴等效剂量)作为特征加入，PPMI提供了相关数据，但计算可能比较复杂
+10. [Levodopa response differs in Parkinson's motor subtypes: A task-based effective connectivity study](https://doi.org/10.1002/cne.24197)
+
+
+
+### Review
+
+1. [Machine Learning for the Diagnosis of Parkinson's Disease: A Review of Literature](https://doi.org/10.3389/fnagi.2021.633752)
+   1. 2021
+   2. PD诊断 （分类）
+   3. N=209
+      1. Methodology: 132
+      2. Clinical Application: 77
+
+   4. 数据来源：
+      1. ![](datasets.png)
+
+   5. 模态 Fig. 3
+   6. 样本量
+      1. Methodology: 137.1
+      2. Clinical Application: 266.2
+
+   7. 模型 N=448
+      1. SVM 132
+      2. 神经网络 76
+      3. 集成学习 82
+      4. KNN 33
+      5. 回归模型 31
+      6. 决策树 28
+      7. 朴素贝叶斯 26
+      8. discriminant analysis 12
+      9. 其他 28
+
+   8. MRI相关 N=36 17.2%
+      1. 平均准确率 87.5%，最低准确率70.5%，最高准确率100%
+      2. 每项研究中取得最高准确率的模型：
+         1. SVM N=21 58.3%
+         2. 神经网络 N=3 8.3%
+         3. 回归模型 N=2 5.6%
+         4. 集成学习 N=1 2.8%
+         5. 其他 N=1 2.8%
+
+      3. 8项神经网络相关研究直接使用MRI数据进行分类，其他研究使用从影像中提取的特征（皮层厚度，脑区体积等）
+      4. 17项使用PPMI数据集的研究中，16项研究使用准确率评估模型，均值为87.9%
+      5. 19项独立采集MRI数据的研究中，16项研究使用准确率评估模型，均值为87.0%
+
+2. [Use of Magnetic Resonance Imaging and Artificial Intelligence in Studies of Diagnosis of Parkinson’s Disease](https://doi.org/10.1021/acschemneuro.9b00207)
+   1. 2019
+   2. PD诊断，鉴别诊断，分型
+   3. 特征提取
+      1. 传统上通常根据组间差异提取
+      2. 提取疾病相关特征并移除噪声
+         1. 尺度不变特征变换(SIFT)
+         2. Kendall tau rank correlation coefficient
+            1. 有序分类变量相关系数
+      3. 在大样本量数据中提取最具辨别能力的特征 Large data sets created a large number of features, so researchers developed novel frameworks to analyze substantial image features
+         1. ? JFSS(joint feature-sample selection)
+         2. 线性判别分析(LDA)
+            1. 将样本投影至直线上进行分类
+         3. Multilevel ROI features
+            1. 灰质体积、皮层厚度
+            2. ROI间连接
+      4. 比较不同特征提取方法
+         1. Folded concave penalized (FCP) sparse logistic regression  99.7%
+         2. PCA  77.8%
+   4. ![](pipeline.png)
+      1. [Hierarchical Feature Representation and Multimodal Fusion with Deep Learning for AD/MCI Diagnosis](https://doi.org/10.1016%2Fj.neuroimage.2014.06.077)
+         1. [Beginners Guide to Boltzmann Machine](https://analyticsindiamag.com/beginners-guide-to-boltzmann-machines/)
+3. [The performance of various machine learning methods for Parkinson’s disease recognition: a systematic review](https://doi.org/10.1007/s12144-022-02949-8)
+   1. The most common ones are based on Decision Tree (DT), Random Forest (RF), Boosted Trees, XGBoost, Adaboost, K-Nearest Neighbors (K-NN), Linear Discriminant Analysis (LDA), Logistic Regression (LR), Support Vector Machine (SVM), and Naive Bayes (NB)
+   2. The performance of RF, SVM, LR are high
+4. [The Levodopa Response Varies in Pathologically Confirmed Parkinson's Disease: A Systematic Review](https://doi.org/10.1002/mdc3.12885)
+   1. 2020
+   2. An excellent response being >30% improvement in Unified Parkinson’s Disease Rating Scale part 3 or ≥ 24.5% improvement in the Movement Disorder Society Unified Parkinson’s Disease Rating Scale part 3
+   3. 尽管左旋多巴用量更大，但男性U3评分比女性更差
+   4. PIGD亚型响应比TD亚型更差
+   5. 年轻患者响应更好
+   6. 左旋多巴对10%的PD患者没有效果，对12%的患者效果较差
+
+
+
+
+### UPDRS3 & MDS-UPDRS3
+
+1. [Correlation between the Movement Disorders Society Unified Parkinson’s Disease  rating scale (MDS-UPDRS) and the Unified Parkinson’s Disease rating  scale (UPDRS) during l-dopa acute challenge](https://doi.org/10.1016/j.parkreldis.2011.07.002)
+   1. An excellent correlation between UPDRS and MDS-UPDRS and that the 30% of variation in UPDRS score used for predicting sustained long term L-dopa response was equivalent to 24% in MDS-UPDRS
+2. [How to identify tremor dominant and postural instability/gait difficulty groups with the movement disorder society  unified Parkinson's disease rating scale: Comparison with the unified  Parkinson's disease rating scale](https://doi.org/10.1002/mds.25383)
+   1. ![](updrs2.1.png)
