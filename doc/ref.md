@@ -1,36 +1,6 @@
 ### Prediction
 
-1. [Levodopa responsiveness in Parkinson's disease: harnessing real-life experience with machine-learning analysis](https://doi.org/10.1007/s00702-022-02540-2)
-   1. 左旋多巴长期反应（LDR评估较复杂，但短期左旋多巴响应较简单）
-   2. N=296
-   3. Consecutive patients with PD attending the outpatient Movement Disorders Unit of Rabin Medical Center from 2000 to 2020 were retrospectively identified by file review
-   4. 纳入了有长期随访数据（左旋多巴治疗前后数据）的患者；仅纳入特发性PD患者；排除在随访期间PD诊断发生改变的患者
-   5. 采集用药前和用药3个月后的U3评分，改善率>30%为响应良好(N=128)
-   6. 白质高信号（没有提及获取方式，可能需要人工评估）(the analysis of the MRI findings was qualitative and not based on scales grading the degree of ischemic changes)
-   7. 使用特征：用药前U3评分、用药后U3评分、性别、发病年龄（患者自行报告）、白质高信号、是否使用多巴胺受体激动剂、左旋多巴使用时长、种族、首发症状、运动前症状
-   8. 回归分析：对各个变量独立地进行线性回归分析以确定各个变量的相关性，仅包括p<0.05的结果
-      1. 女性、年轻时起病、早期使用多巴胺受体激动剂的患者响应较好
-      2. 发病年龄，初次使用左旋多巴年龄与左旋多巴响应最相关
-      3. 上述两个变量显著相关（r=0.95）
-      4. 比较使用A.发病年龄(r2=0.0453)，B.初次使用左旋多巴年龄(r2=0.007)，C.发病年龄及初次使用左旋多巴年龄(r2=0.052)的三类线性模型，模型C中存在显著关联(p=0.012)
-      5. 初次使用左旋多巴年龄对左旋多巴响应的影响是否与起病年龄有关(whether the impact of time to levodopa treatment on response to levodopa was related to age at disease onset)
-         1. 根据不同的起病年龄分组
-         2. 对各组计算左旋多巴响应与初次使用左旋多巴年龄间的斜率
-         3. 计算各组间差异的p值
-         4. 结果表明起病年龄72岁时的p值最低：对于72岁以下患者，推迟使用左旋多巴年龄对响应影响不大；对于72岁以上患者，提前使用左旋多巴年龄有助于改善左旋多巴响应
-      6. 白质高信号：变化较大患者与变化较小患者存在显著差异
-   9. 按照对左旋多巴响应进行分层：评分没有变化或恶化；评分改善率<0.3(mild)；评分改善率>=0.3(good)。分析三组中各变量是否存在差异，使用logistic回归对good和mild进行分类
-      1. Non-resonders(N=45)/Mild responders(N=123)/Good responders(N=128)
-      2. Non-responders起病年龄、初次使用受体激动剂年龄、初次使用左旋多巴年龄均比其他两组大，在使用受体激动剂后改善最小
-      3. Good responder中，僵直和运动迟缓是主要的首发症状；Non-responder中震颤是主要的首发症状
-      4. Good responder的并发症较少；心血管风险因素是与左旋多巴响应最相关的并发症
-      5. 在logistic回归模型中，只有性别存在显著关联
-   10. 通过机器学习方法(hierarchical clustering, silhouette score?)对患者进行分层(non-to-mild responders/good responders)
-       1. Non-to-mild response(N=227)/Good response(N=69)
-       2. 分析结果与按左旋多巴响应一致
-   11. good组在用药前评分与mild组没有显著差异，但用药后评分显著下降
-   12. 两组间性别和病程分布存在显著差异
-2. [The amplitude of low-frequency fluctuation predicts levodopa treatment response in patients with Parkinson's disease](https://doi.org/10.1016/j.parkreldis.2021.10.003)
+1. [The amplitude of low-frequency fluctuation predicts levodopa treatment response in patients with Parkinson's disease](https://doi.org/10.1016/j.parkreldis.2021.10.003)
    1. N=40-2=38(Two male subjects were excluded due to the presence motion artifacts in the imaging)
    2. Moderate responders(N=21)/Superior responder(N=17)
    3. 通过fMRI计算ALFF(amplitude of low-frequency fluctuation)预测对左旋多巴响应（不使用fMRI故略过具体计算细节）
@@ -61,7 +31,7 @@
       1. 临床数据分布(Table 1)
       2. 使用二项式检验对分类模型的准确率、特异性、敏感性进行分析（是否优于随机预测，p<0.05）
    8. 样本量小；无法将患者分为不同症状亚组；没有考虑偏侧症状；没有研究DBS效果
-3. **[Regional gray matter changes and age predict individual treatment response in Parkinson's disease](https://doi.org/10.1016/j.nicl.2018.101636)**
+2. **[Regional gray matter changes and age predict individual treatment response in Parkinson's disease](https://doi.org/10.1016/j.nicl.2018.101636)**
    1. N=30
       1. 仅左旋多巴N=5，左旋多巴+多巴胺受体激动剂N=25
    2. 患者被分为响应弱(N=15)/强(N=15)两类（U3评分改变量15.5分作为阈值）
@@ -88,7 +58,7 @@
    7. 左旋多巴响应不依赖于运动症状严重程度
    8. 年龄比病程与疾病临床进展的关联更强，年龄与左旋多巴响应负相关
    9. 年龄及灰质密度是显著且独立的响应预测指标
-4. [Can Dopamine Responsiveness Be Predicted in Parkinson’s Disease Without an Acute Administration Test?](https://content.iospress.com/articles/journal-of-parkinsons-disease/jpd223334)
+3. [Can Dopamine Responsiveness Be Predicted in Parkinson’s Disease Without an Acute Administration Test?](https://content.iospress.com/articles/journal-of-parkinsons-disease/jpd223334)
    1.  N=350
        1.  Patients were enrolled prospectively in 13 specialist centers for movement disorders belonging to a national network (NS-PARK-F-CRIN) in France during their selection for sub-thalamic nucleus deep brain stimulation (DBS), as an ancillary study to the PREDISTIM study
        2.  年龄<75；病程>5；没有严重的意识损伤及痴呆，满足MoCA<24和DSM-IV（精神疾病诊断手册）标准；没有严重的精神障碍；没有手术禁忌症（DBS？）；没有严重的脑萎缩和MRI异常；没有影响短期预后的严重疾病
@@ -234,7 +204,46 @@
 9. [Neurophysiological Predictors of Response to Medication in Parkinson's Disease](https://doi.org/10.3389/fneur.2021.763911)
    1. TMS (Transcranial magnetic stimulation)
    2. 可能需要将LEDD(左旋多巴等效剂量)作为特征加入，PPMI提供了相关数据，但计算可能比较复杂
-10. [Levodopa response differs in Parkinson's motor subtypes: A task-based effective connectivity study](https://doi.org/10.1002/cne.24197)
+10. [Levodopa responsiveness in Parkinson's disease: harnessing real-life experience with machine-learning analysis](https://doi.org/10.1007/s00702-022-02540-2)
+   1. 左旋多巴长期反应（LDR评估较复杂，但短期左旋多巴响应较简单）
+   2. N=296
+   3. Consecutive patients with PD attending the outpatient Movement Disorders Unit of Rabin Medical Center from 2000 to 2020 were retrospectively identified by file review
+   4. 纳入了有长期随访数据（左旋多巴治疗前后数据）的患者；仅纳入特发性PD患者；排除在随访期间PD诊断发生改变的患者
+   5. 采集用药前和用药3个月后的U3评分，改善率>30%为响应良好(N=128)
+   6. 白质高信号（没有提及获取方式，可能需要人工评估）(the analysis of the MRI findings was qualitative and not based on scales grading the degree of ischemic changes)
+   7. 使用特征：用药前U3评分、用药后U3评分、性别、发病年龄（患者自行报告）、白质高信号、是否使用多巴胺受体激动剂、左旋多巴使用时长、种族、首发症状、运动前症状
+   8. 回归分析：对各个变量独立地进行线性回归分析以确定各个变量的相关性，仅包括p<0.05的结果
+      1. 女性、年轻时起病、早期使用多巴胺受体激动剂的患者响应较好
+      2. 发病年龄，初次使用左旋多巴年龄与左旋多巴响应最相关
+      3. 上述两个变量显著相关（r=0.95）
+      4. 比较使用A.发病年龄(r2=0.0453)，B.初次使用左旋多巴年龄(r2=0.007)，C.发病年龄及初次使用左旋多巴年龄(r2=0.052)的三类线性模型，模型C中存在显著关联(p=0.012)
+      5. 初次使用左旋多巴年龄对左旋多巴响应的影响是否与起病年龄有关(whether the impact of time to levodopa treatment on response to levodopa was related to age at disease onset)
+         1. 根据不同的起病年龄分组
+         2. 对各组计算左旋多巴响应与初次使用左旋多巴年龄间的斜率
+         3. 计算各组间差异的p值
+         4. 结果表明起病年龄72岁时的p值最低：对于72岁以下患者，推迟使用左旋多巴年龄对响应影响不大；对于72岁以上患者，提前使用左旋多巴年龄有助于改善左旋多巴响应
+      6. 白质高信号：变化较大患者与变化较小患者存在显著差异
+   9. 按照对左旋多巴响应进行分层：评分没有变化或恶化；评分改善率<0.3(mild)；评分改善率>=0.3(good)。分析三组中各变量是否存在差异，使用logistic回归对good和mild进行分类
+      1. Non-resonders(N=45)/Mild responders(N=123)/Good responders(N=128)
+      2. Non-responders起病年龄、初次使用受体激动剂年龄、初次使用左旋多巴年龄均比其他两组大，在使用受体激动剂后改善最小
+      3. Good responder中，僵直和运动迟缓是主要的首发症状；Non-responder中震颤是主要的首发症状
+      4. Good responder的并发症较少；心血管风险因素是与左旋多巴响应最相关的并发症
+      5. 在logistic回归模型中，只有性别存在显著关联
+   10. 通过机器学习方法(hierarchical clustering, silhouette score?)对患者进行分层(non-to-mild responders/good responders)
+       1. Non-to-mild response(N=227)/Good response(N=69)
+       2. 分析结果与按左旋多巴响应一致
+   11. good组在用药前评分与mild组没有显著差异，但用药后评分显著下降
+   12. 两组间性别和病程分布存在显著差异
+11. [Levodopa response differs in Parkinson's motor subtypes: A task-based effective connectivity study](https://doi.org/10.1002/cne.24197)
+    1. 亚型 N=26
+       1. TD (tremor dominant) N=14
+       2. PIGD (postural instability/gait difficulty) N=12
+
+    2. HC 21
+    3. 在HC, TD, PIGD间通过任务态fMRI比较皮质-纹状体-丘脑-皮质运动回路激活
+    4. OFF状态下，PD患者运动皮层比HC激活程度更低
+    5. 用药后，TD患者后壳核与其他区域的连接增强，但PIGD患者未出现
+
 
 
 
@@ -263,7 +272,7 @@
       5. 回归模型 31
       6. 决策树 28
       7. 朴素贝叶斯 26
-      8. discriminant analysis 12
+      8. 判别分析 discriminant analysis 12
       9. 其他 28
 
    8. MRI相关 N=36 17.2%
