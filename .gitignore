@@ -1,5 +1,7 @@
 data
 log
 config
+test
+.ipynb_checkpoints
 ref.py
 **/__pycache__
