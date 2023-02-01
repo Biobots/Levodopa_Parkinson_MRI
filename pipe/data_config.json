@@ -1,0 +1,11 @@
+{
+    "data_group":
+    {
+        "demo": ["AGE_AT_VISIT", "SEX"],
+        "clinic": ["NUPDR3OF", "LEDD", "DURATION"],
+        "img":
+        {
+            "test_pca": ["PCA_*"]
+        }
+    }
+}

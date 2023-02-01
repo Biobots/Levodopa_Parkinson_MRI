@@ -9,6 +9,11 @@ def getPandas(name):
     data = pd.read_json(os.path.join('data', 'json', name+'.json'))
     return data
 
+def getConfig(name):
+    with open(os.path.join('pipe', name + '_config.json'), 'r', encoding="utf-8") as f:
+        data = json.load(f)
+        return data
+
 def getDataPandas():
     data = pd.read_json(os.path.join('data', 'json', 'data.json'))
     return data

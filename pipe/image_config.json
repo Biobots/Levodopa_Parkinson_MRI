@@ -1,0 +1,13 @@
+{
+    "task":
+    {
+        "test_pca":
+        {
+            "params":
+            {
+                "n_components": 0.9,
+                "img_path_tag": "T1_MNI_PATH"
+            }
+        }
+    }
+}
