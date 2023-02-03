@@ -1,13 +1,22 @@
 {
     "task":
     {
-        "test_pca":
+        "t1_pca":
         {
             "params":
             {
                 "n_components": 0.8,
                 "pca_random_state": 1,
                 "img_path_tag": "T1_MNI_PATH"
+            }
+        },
+        "gm_pca":
+        {
+            "params":
+            {
+                "n_components": 0.8,
+                "pca_random_state": 1,
+                "img_path_tag": "T1_GM_PATH"
             }
         }
     }

@@ -4,6 +4,7 @@
         "classification/2":
         {
             "output": "CAT",
+            "stratify": true,
             "models": [
                 {
                     "name": "svc",
@@ -43,6 +44,35 @@
             ],
             "gridsearch_params": {
                 "scoring": "roc_auc"
+            }
+        },
+        "regression":
+        {
+            "output": "SCORE",
+            "stratify": false,
+            "models": [
+                {
+                    "name": "lasso",
+                    "params": {
+                        "alpha": [0.1, 0.2],
+                        "fit_intercept": [true, false]
+                    }
+                },
+                {
+                    "name": "linear",
+                    "params": {
+                        
+                    }
+                }
+            ],
+            "metrics": [
+                ["r2", false]
+            ],
+            "plot": [
+                ["plot_r2", false]
+            ],
+            "gridsearch_params": {
+                "scoring": "r2"
             }
         }
     }

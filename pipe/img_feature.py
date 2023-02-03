@@ -11,12 +11,6 @@ def load_img(rec, img_path_tag):
 def load_imgs(df, img_path_tag):
     return df.apply(lambda d: load_img(d, img_path_tag), axis=1)
 
-def preprocess_imgs(vox):
-    vox = np.array([np.array(l) for l in vox])
-    vox = np.reshape(vox, (vox.shape[0], -1))
-    vox = zscore(vox, axis=1)
-    return vox
-
 def PCA_fit_transform(vox, params):
     pca = PCA(n_components=params['n_components'], random_state=params['pca_random_state'])
     features = pca.fit_transform(vox)
@@ -28,9 +22,13 @@ def PCA_transform(vox, pca):
     features = pd.DataFrame(features, columns=['PCA_{}'.format(i+1) for i in range(features.shape[1])])
     return features
 
-def test_pca(data, train_idx, test_idx, params):
+def gen_pca(data, train_idx, test_idx, params):
     vox = load_imgs(data, params['img_path_tag'])
-    vox = preprocess_imgs(vox)
+    vox = np.array([np.array(l) for l in vox])
+    #vox = np.reshape(vox, (vox.shape[0], -1))
+    # Drop 0 along axis0
+    vox = vox[:, ~np.all(vox==0, axis=0)]
+    vox = zscore(vox, axis=1)
     pca_train, pca = PCA_fit_transform(vox[train_idx], params)
     pca_test = PCA_transform(vox[test_idx], pca)
     return pca_train, pca_test
