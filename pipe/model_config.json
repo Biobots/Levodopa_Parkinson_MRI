@@ -35,12 +35,11 @@
                 }
             ],
             "metrics": [
-                "auc",
-                "accuracy",
-                "precision",
-                "recall",
-                "f1",
-                "confusion_matrix"
+                ["AUC", true]
+            ],
+            "plot": [
+                ["plot_roc", true],
+                ["plot_confusion_matrix", false]
             ],
             "gridsearch_params": {
                 "scoring": "roc_auc"

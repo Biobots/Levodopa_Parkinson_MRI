@@ -5,7 +5,8 @@
         {
             "params":
             {
-                "n_components": 0.9,
+                "n_components": 0.8,
+                "pca_random_state": 1,
                 "img_path_tag": "T1_MNI_PATH"
             }
         }

@@ -17,8 +17,8 @@ def preprocess_imgs(vox):
     vox = zscore(vox, axis=1)
     return vox
 
-def PCA_fit_transform(vox, n_components):
-    pca = PCA(n_components=n_components)
+def PCA_fit_transform(vox, params):
+    pca = PCA(n_components=params['n_components'], random_state=params['pca_random_state'])
     features = pca.fit_transform(vox)
     features = pd.DataFrame(features, columns=['PCA_{}'.format(i+1) for i in range(features.shape[1])])
     return features, pca
@@ -31,6 +31,6 @@ def PCA_transform(vox, pca):
 def test_pca(data, train_idx, test_idx, params):
     vox = load_imgs(data, params['img_path_tag'])
     vox = preprocess_imgs(vox)
-    pca_train, pca = PCA_fit_transform(vox[train_idx], params['n_components'])
+    pca_train, pca = PCA_fit_transform(vox[train_idx], params)
     pca_test = PCA_transform(vox[test_idx], pca)
     return pca_train, pca_test

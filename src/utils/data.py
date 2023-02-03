@@ -56,6 +56,9 @@ def writePatch(data, tag):
 def writeBlock(data, tag):
     with open(os.path.join('data', 'json', 'block_'+tag+'.json'), 'w+', encoding="utf-8") as f:
         json.dump(data, f, ensure_ascii=False, indent=4)
+
+def group_stratified_train_test_split(data, group, stratify, random_state=None, test_size=0.2):
+    pass
         
 def splitTestByRatio(name, ratio=0.2):
     data = getPandas(name)
