@@ -7,5 +7,15 @@
         {
             "test_pca": ["PCA_*"]
         }
+    },
+    "class_tags":
+    {
+        "x": ["SEX"],
+        "y": ["CAT"]
+    },
+    "cont_tags":
+    {
+        "x": ["AGE_AT_VISIT", "NUPDR3OF", "NUPDR3ON", "LEDD", "DURATION"],
+        "y": ["SCORE"]
     }
 }
