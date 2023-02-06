@@ -37,3 +37,4 @@ def stats_analyze(x_train: pd.DataFrame, x_test: pd.DataFrame, y_train: pd.DataF
                 print('{} t-test p: {}'.format(tag, ttest_ind(train, test)))
             else:
                 print('{} ranksums p: {}'.format(tag, ranksums(train, test)))
+    print()

@@ -12,12 +12,19 @@ from sklearn import metrics
 import numpy as np
 import seaborn as sns
 
+import functools
+
 def class2_roc_auc_score(y_true, y_score):
     y_pred = y_score[:, 1]
     return metrics.roc_auc_score(y_true=y_true, y_score=y_pred)
 
 def plot_r2(y_true, y_score):
     return sns.regplot(x=y_true, y=y_score)
+
+def plot_confusion_matrix(y_true, y_score):
+    mat = metrics.confusion_matrix(y_true, y_score)
+    mat = mat.astype('float') / mat.sum(axis=1)[:, np.newaxis]
+    return sns.heatmap(mat, square=True, annot=True, cmap=sns.color_palette("Blues", as_cmap=True))
 
 Model_LUT = {
     'svc': SVC,
@@ -33,7 +40,7 @@ Metrics_LUT = {
 
 Plot_LUT = {
     'plot_roc': skplt.metrics.plot_roc,
-    'plot_confusion_matrix': skplt.metrics.plot_confusion_matrix,
+    'plot_confusion_matrix': plot_confusion_matrix,
     'plot_r2': plot_r2
 }
 
