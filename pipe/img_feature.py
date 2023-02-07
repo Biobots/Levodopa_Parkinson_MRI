@@ -25,10 +25,10 @@ def PCA_transform(vox, pca):
 def gen_pca(data, train_idx, test_idx, params):
     vox = load_imgs(data, params['img_path_tag'])
     vox = np.array([np.array(l) for l in vox])
-    #vox = np.reshape(vox, (vox.shape[0], -1))
+    vox = np.reshape(vox, (vox.shape[0], -1))
     # Drop 0 along axis0
-    vox = vox[:, ~np.all(vox==0, axis=0)]
-    vox = zscore(vox, axis=1)
+    #vox = vox[:, ~np.all(vox==0, axis=0)]
+    #vox = zscore(vox, axis=1)
     pca_train, pca = PCA_fit_transform(vox[train_idx], params)
     pca_test = PCA_transform(vox[test_idx], pca)
     return pca_train, pca_test
