@@ -46,5 +46,6 @@ Plot_LUT = {
 
 Feature_LUT = {
     't1_pca': gen_pca,
-    'gm_pca': gen_pca
+    'gm_pca': gen_pca,
+    'wm_pca': gen_pca
 }
