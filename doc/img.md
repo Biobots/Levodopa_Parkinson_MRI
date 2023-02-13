@@ -74,9 +74,30 @@
 1. 2015, Journal of Neuroscience Methods,
 2. PD鉴别诊断 PD, HC, SWEDD
 3. T1
-4. 分组
+4. 分组 (class)
    1. Age-Unrelated Groups (AUG): 3 binary classification groups * 2 types of brain tissues (WM, GM)
    2. Age-Related Subgroups (ARS):  3 binary classification groups * 2 types of brain tissues * 6 age divisions - 2 types of brain tissues * 2 subgroups each for PD vs. SWEDD and SWEDD vs. HC above the age of 80 years
+   3. a vs. b -> classification group
 5. VIC (voxel intensity changes): 不同组间体素均值之差 (a vs. b)
 6. WAT (Welch-Aspin test) 用于评估体素对各组的区分能力
-7. KSOM (Kohonen self-organizing map): vector quantization and feature extraction from VIC image
+7. KSOM (Kohonen self-organizing map): vector quantization and feature extraction from VIC image ???
+   1. 特征投影?
+8. LSSVM (least squares support vector machine)
+9. KSOM-WAT-LSSVM
+
+### Machine Learning Models for Diagnosis of Parkinson’s Disease Using Multiple Structural Magnetic Resonance Imaging Features
+1. 2022, Frontiers in Aging Neuroscience, 5.7
+2. PD诊断
+3. T1 (private + PPMI)
+4. 根据前处理提取不同特征
+   1. Cerebellar
+   2. Subcortical
+   3. Cortical
+5. Pearson's correlation test, LASSO to select the most discriminating features
+6. 5-fold cv, logistic regression
+7. Heatmap analysis分析保留特征
+
+### Exploring diagnosis and imaging biomarkers of Parkinson’s disease via iterative canonical correlation analysis based feature selection
+1. 2018, Computerized Medical Imaging and Graphics, 7.4
+2. PD诊断
+3. T1
