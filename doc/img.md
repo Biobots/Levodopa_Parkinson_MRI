@@ -19,6 +19,26 @@
 5. **PyRadiomics**
 6. mRMR, LASSO (10-fold cv)
 
+### Substantia Nigra Radiomics Feature Extraction of Parkinson’s Disease Based on Magnitude Images of Susceptibility-Weighted Imaging
+1. 2021, Frontiers in Neuroscience, 
+2. PD诊断
+3. SWI (In SWI, the magnitude image can be acquired directly and has been an easy applicable diagnostic tool for nigral degeneration in PD)
+4. 2D slices of the SN ROI
+   1. Histogram features (n=42)
+   2. Form factor features (n=15)
+   3. GLCM features (n=154)
+   4. Run length matrix features (n=180)
+   5. Gray level size zone matrix (GLSZM) features (n=11)
+5. 特征筛选: mRMR + LASSO -- 16 features
+6. LASSO logistic, RF, svmLinear, svmRadial, KNN
+   1. 100-fold leave group-out cross-validation (LGOCV)
+
+### Feature selection and machine learning methods for optimal identification and prediction of subtypes in Parkinson’s disease
+1. 2021, Computer Methods and Programs in Biomedicine, 7.0
+2. PD亚型预测
+3. SPECT
+4. ...
+
 
 ## Structure Specific Feature Extraction
 
@@ -35,9 +55,28 @@
 ### Classification of PPMI MRI scans with voxel-based morphometry and machine learning to assist in the diagnosis of Parkinson’s disease
 1. 2020, Computer Methods and Programs in Biomedicine, 7.0
 2. PD诊断
-3. T1 (PPMI)
-4. VBM -- ROI -- Features
+3. Male/Female分别预测
+4. 方法描述比较详细
+5. T1 (PPMI)
+6. VBM -- ROI -- Features
    1. First-order: average, central moments, entropy
    2. Second-order: GLCM based
-5. PCA + Wrappers Feature Subset Selection
+7. PCA + Wrappers Feature Subset Selection
    1. Wrappers Feature Subset Selection: 根据相关性添加新特征，同时去除insignificant特征 (How to evaluate significance using complex models)
+      1. Logistic, RF, NB, Bayes Network, KNN, MLP, SVM
+8. 10-fold cv
+   1. Logistic, RF, NB, Bayes Network, KNN, MLP, SVM
+9. Regions with the most selected features
+   1. 部分ROI特征没有用到
+   2. 不同ROI对PD检测的贡献不同
+
+### Unsupervised learning based feature extraction for differential diagnosis of neurodegenerative diseases: A case study on early-stage diagnosis of Parkinson disease
+1. 2015, Journal of Neuroscience Methods,
+2. PD鉴别诊断 PD, HC, SWEDD
+3. T1
+4. 分组
+   1. Age-Unrelated Groups (AUG): 3 binary classification groups * 2 types of brain tissues (WM, GM)
+   2. Age-Related Subgroups (ARS):  3 binary classification groups * 2 types of brain tissues * 6 age divisions - 2 types of brain tissues * 2 subgroups each for PD vs. SWEDD and SWEDD vs. HC above the age of 80 years
+5. VIC (voxel intensity changes): 不同组间体素均值之差 (a vs. b)
+6. WAT (Welch-Aspin test) 用于评估体素对各组的区分能力
+7. KSOM (Kohonen self-organizing map): vector quantization and feature extraction from VIC image
