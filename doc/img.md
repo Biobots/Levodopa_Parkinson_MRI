@@ -35,9 +35,17 @@
 
 ### Feature selection and machine learning methods for optimal identification and prediction of subtypes in Parkinson’s disease
 1. 2021, Computer Methods and Programs in Biomedicine, 7.0
-2. PD亚型预测
+2. PD分型 clustering
 3. SPECT
-4. ...
+4. HMLS (hybrid machine learning system): predictor algorithms linked with faeture selector algorithms (FSAs)
+   1. Most machine learning algorithms cannot accurately work with a high dimensional dataset
+5. 2 stages:
+   1. Clustering (subtype identification): After dimensionality reduction (PCA), cluster the data via the K-Means algorithm
+   2. Classification (subtype prediction): FSAs to rank features, and each sequential combination selected by FSAs is assessed using multiple classifiers
+6. Feature extraction algorithm (FEA): PCA
+7. Clustering algorithm: KMA
+8. Feature selection algorithms (FSAs): ILFS, ReliefA, LLBCFS, UMCFS, UDFSA, CSFA, FSASL, UFSOL, LASSO
+9. Classification algorithms:
 
 
 ## Structure Specific Feature Extraction
@@ -101,3 +109,23 @@
 1. 2018, Computerized Medical Imaging and Graphics, 7.4
 2. PD诊断
 3. T1
+4. Segmentation -- GM, WM ROI -- GMV, WMV for each ROI
+5. ICCA feature selection
+6. RLDA (robust linear discriminant analysis) 分类
+7. Feature Extraction:
+   1. Unsupervised: PCA, t-test
+   2. Supervised: LASSO
+
+### Extraction of large-scale structural covariance networks from grey matter volume for Parkinson’s disease classification
+1. 2017, European Radiology, 
+2. PD诊断
+3. T1
+4. ICA
+   1. Extract SCNs: characterize the common inter-subject GMV covariations without setting a priori regions of interests
+   2. 70 components (subj * ICs) * (ICs * voxels)
+5. 70 ROIs (structural covariance networks)
+6. Spatial regression analysis
+   1. (#subjs * 70): 每个患者对应70个network integrity index (beta weight)
+7. Logistic regression:
+   1. Network integrity * 70
+   2. LOOCV to determine the subset of 70 SCNs
