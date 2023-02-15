@@ -16,7 +16,7 @@
 2. PD鉴别诊断
 3. T1, T2, T2 FLAIR, SWI, PET
 4. ROI: putamen, caudate nucleus
-5. **PyRadiomics**
+5. **PyRadiomics**: 没有说明具体特征
 6. mRMR, LASSO (10-fold cv)
 
 ### Substantia Nigra Radiomics Feature Extraction of Parkinson’s Disease Based on Magnitude Images of Susceptibility-Weighted Imaging
@@ -53,7 +53,7 @@
 ### 3D Textural, Morphological and Statistical Analysis of Voxel of Interests in 3T MRI Scans for the Detection of Parkinson’s Disease Using Artificial Neural Networks
 1. 2020, Healthcare, 3.2
 2. PD早期诊断 三分类
-3. MPRAGE T1
+3. MPRAGE T1 PPMI
 4. Eight subcortical structures, namely, caudate nucleus, putamen, globus pallidus internus and externus (GPi & GPe), thalamus, STN, substantia nigra (SN), and red nucleus (RN)
 5. **PyRadiomics**: Textural, morphological, statistical features of the eight subcortical structures
 6. MLP, xgboost, RF, SVM分类
@@ -110,7 +110,7 @@
 2. PD诊断
 3. T1
 4. Segmentation -- GM, WM ROI -- GMV, WMV for each ROI
-5. ICCA feature selection
+5. ICCA feature selection 两组变量间相关性
 6. RLDA (robust linear discriminant analysis) 分类
 7. Feature Extraction:
    1. Unsupervised: PCA, t-test
