@@ -4,6 +4,7 @@
         "classification/2":
         {
             "output": "CAT",
+            "continuous": false,
             "stratify": true,
             "models": [
                 {
@@ -49,6 +50,7 @@
         "classification/5":
         {
             "output": "CAT5",
+            "continuous": false,
             "stratify": false,
             "models": [
                 {
@@ -93,6 +95,7 @@
         "regression":
         {
             "output": "SCORE",
+            "continuous": true,
             "stratify": false,
             "models": [
                 {

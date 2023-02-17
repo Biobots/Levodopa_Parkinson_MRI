@@ -3,6 +3,7 @@ import numpy as np
 import pandas as pd
 from scipy.stats import zscore
 from sklearn.decomposition import PCA
+from src.utils.data import getPandas
 
 def load_img(rec, img_path_tag):
     img_data = np.array(nib.load(rec[img_path_tag]).get_fdata())
@@ -32,3 +33,10 @@ def gen_pca(data, train_idx, test_idx, params):
     pca_train, pca = PCA_fit_transform(vox[train_idx], params)
     pca_test = PCA_transform(vox[test_idx], pca)
     return pca_train, pca_test
+
+def load_radiomics(data, train_idx, test_idx, params):
+    df_radiomic = getPandas('data_radiomic')
+    df_radiomic = df_radiomic.drop(['KEY'], axis=1)
+    radiomic_train = df_radiomic.iloc[train_idx]
+    radiomic_test = df_radiomic.iloc[test_idx]
+    return radiomic_train, radiomic_test

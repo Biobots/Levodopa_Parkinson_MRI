@@ -2,7 +2,7 @@ from sklearn.svm import SVC
 from sklearn.linear_model import Lasso, LinearRegression
 from xgboost.sklearn import XGBClassifier
 
-from pipe.img_feature import gen_pca
+from pipe.img_feature import gen_pca, load_radiomics
 
 import scikitplot as skplt
 import matplotlib.pyplot as plt
@@ -47,5 +47,6 @@ Plot_LUT = {
 Feature_LUT = {
     't1_pca': gen_pca,
     'gm_pca': gen_pca,
-    'wm_pca': gen_pca
+    'wm_pca': gen_pca,
+    'test_radiomic': load_radiomics
 }
