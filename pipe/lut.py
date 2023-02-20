@@ -48,5 +48,6 @@ Feature_LUT = {
     't1_pca': gen_pca,
     'gm_pca': gen_pca,
     'wm_pca': gen_pca,
-    'test_radiomic': load_radiomics
+    't1_radiomic': load_radiomics,
+    'gm_radiomic': load_radiomics
 }

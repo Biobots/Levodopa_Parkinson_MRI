@@ -35,7 +35,7 @@ def gen_pca(data, train_idx, test_idx, params):
     return pca_train, pca_test
 
 def load_radiomics(data, train_idx, test_idx, params):
-    df_radiomic = getPandas('data_radiomic')
+    df_radiomic = getPandas(params['json_tag'])
     df_radiomic = df_radiomic.drop(['KEY'], axis=1)
     radiomic_train = df_radiomic.iloc[train_idx]
     radiomic_test = df_radiomic.iloc[test_idx]
