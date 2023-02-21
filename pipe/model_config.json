@@ -15,9 +15,9 @@
                         "degree": [3],
                         "gamma": ["scale"],
                         "coef0": [0, 1],
-                        "shrinking": [true, false],
-                        "probability": [true, false],
-                        "tol": [1e-1, 1e-2, 1e-3],
+                        "shrinking": [true],
+                        "probability": [true],
+                        "tol": [1e-10, 1e-9, 1e-8],
                         "random_state": [1]
                     }
                 },
