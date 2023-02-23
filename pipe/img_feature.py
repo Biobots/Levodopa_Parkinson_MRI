@@ -40,3 +40,9 @@ def load_radiomics(data, train_idx, test_idx, params):
     radiomic_train = df_radiomic.iloc[train_idx]
     radiomic_test = df_radiomic.iloc[test_idx]
     return radiomic_train, radiomic_test
+
+def load_volume(data, train_idx, test_idx, params):
+    df_volume = data[params['volume_tag']]
+    volume_train = df_volume.iloc[train_idx]
+    volume_test = df_volume.iloc[test_idx]
+    return volume_train, volume_test

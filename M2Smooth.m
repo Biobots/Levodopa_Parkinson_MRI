@@ -3,7 +3,7 @@ spm_jobman('initcfg');
 smooth_job = struct;
 
 data = jsondecode(fileread('data/json/data.json'));
-nii = {data.T1_GM_PATH};
+nii = {data.T1_MNI_PATH};
 nii = reshape(nii,length(nii),1);
 nii = cellstr(nii);
 

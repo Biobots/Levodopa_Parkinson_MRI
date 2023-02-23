@@ -1,6 +1,33 @@
 {
     "task":
     {
+        "logistic/2":
+        {
+            "output": "CAT",
+            "continuous": false,
+            "stratify": true,
+            "models": [
+                {
+                    "name": "logistic",
+                    "params": {
+                        "penalty": ["elasticnet"],
+                        "solver": ["saga"],
+                        "random_state": [1],
+                        "l1_ratio": [0.2, 0.5, 0.7]
+                    }
+                }
+            ],
+            "metrics": [
+                ["AUC", true]
+            ],
+            "plot": [
+                ["plot_roc", true],
+                ["plot_confusion_matrix", false]
+            ],
+            "gridsearch_params": {
+                "scoring": "roc_auc"
+            }
+        },
         "classification/2":
         {
             "output": "CAT",

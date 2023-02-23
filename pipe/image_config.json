@@ -16,7 +16,7 @@
             {
                 "n_components": 0.8,
                 "pca_random_state": 1,
-                "img_path_tag": "T1_SGM_PATH"
+                "img_path_tag": "T1_GM_PATH"
             }
         },
         "wm_pca":
@@ -47,6 +47,13 @@
             "params":
             {
                 "json_tag": "data_gm_radiomic"
+            }
+        },
+        "tiv_gmv":
+        {
+            "params":
+            {
+                "volume_tag": ["TIV", "GM_VOL"]
             }
         }
     }

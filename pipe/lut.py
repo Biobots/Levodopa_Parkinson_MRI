@@ -2,7 +2,7 @@ from sklearn.svm import SVC
 from sklearn.linear_model import Lasso, LinearRegression, LogisticRegression
 from xgboost.sklearn import XGBClassifier
 
-from pipe.img_feature import gen_pca, load_radiomics
+from pipe.img_feature import gen_pca, load_radiomics, load_volume
 
 import scikitplot as skplt
 import matplotlib.pyplot as plt
@@ -51,5 +51,6 @@ Feature_LUT = {
     'wm_pca': gen_pca,
     't1_radiomic': load_radiomics,
     't1_radiomic_full': load_radiomics,
-    'gm_radiomic': load_radiomics
+    'gm_radiomic': load_radiomics,
+    'tiv_gmv': load_volume
 }
