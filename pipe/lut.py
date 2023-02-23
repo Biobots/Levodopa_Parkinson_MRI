@@ -1,5 +1,5 @@
 from sklearn.svm import SVC
-from sklearn.linear_model import Lasso, LinearRegression
+from sklearn.linear_model import Lasso, LinearRegression, LogisticRegression
 from xgboost.sklearn import XGBClassifier
 
 from pipe.img_feature import gen_pca, load_radiomics
@@ -30,7 +30,8 @@ Model_LUT = {
     'svc': SVC,
     'xgboost': XGBClassifier,
     'lasso': Lasso,
-    'linear': LinearRegression
+    'linear': LinearRegression,
+    'logistic': LogisticRegression
 }
 
 Metrics_LUT = {
@@ -49,5 +50,6 @@ Feature_LUT = {
     'gm_pca': gen_pca,
     'wm_pca': gen_pca,
     't1_radiomic': load_radiomics,
+    't1_radiomic_full': load_radiomics,
     'gm_radiomic': load_radiomics
 }

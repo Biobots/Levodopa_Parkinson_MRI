@@ -28,6 +28,13 @@
                 "img_path_tag": "T1_WM_PATH"
             }
         },
+        "t1_radiomic_full":
+        {
+            "params":
+            {
+                "json_tag": "data_radiomic_full"
+            }
+        },
         "t1_radiomic":
         {
             "params":
