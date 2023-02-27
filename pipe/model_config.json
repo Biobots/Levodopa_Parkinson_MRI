@@ -75,9 +75,9 @@
                 "scoring": "roc_auc"
             }
         },
-        "classification/5":
+        "classification/10":
         {
-            "output": "CAT5",
+            "output": "CAT10",
             "continuous": false,
             "stratify": false,
             "models": [
@@ -111,9 +111,10 @@
                 }
             ],
             "metrics": [
-                
+                ["Accuracy", false]
             ],
             "plot": [
+                ["plot_roc", true],
                 ["plot_confusion_matrix", false]
             ],
             "gridsearch_params": {
@@ -126,13 +127,6 @@
             "continuous": true,
             "stratify": false,
             "models": [
-                {
-                    "name": "lasso",
-                    "params": {
-                        "alpha": [0.1, 0.2],
-                        "fit_intercept": [true, false]
-                    }
-                },
                 {
                     "name": "linear",
                     "params": {
