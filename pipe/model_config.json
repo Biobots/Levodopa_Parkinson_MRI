@@ -75,11 +75,11 @@
                 "scoring": "roc_auc"
             }
         },
-        "classification/10":
+        "classification/5":
         {
-            "output": "CAT10",
+            "output": "CAT5",
             "continuous": false,
-            "stratify": false,
+            "stratify": true,
             "models": [
                 {
                     "name": "svc",
