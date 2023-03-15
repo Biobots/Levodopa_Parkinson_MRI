@@ -130,7 +130,7 @@
                 {
                     "name": "linear",
                     "params": {
-                        
+                        "solver": ["liblinear"]
                     }
                 }
             ],
