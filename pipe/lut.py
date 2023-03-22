@@ -36,6 +36,7 @@ Model_LUT = {
 
 Metrics_LUT = {
     'AUC': class2_roc_auc_score,
+    'AUC_multi': metrics.roc_auc_score,
     'r2': metrics.r2_score,
     'Accuracy': metrics.accuracy_score
 }
