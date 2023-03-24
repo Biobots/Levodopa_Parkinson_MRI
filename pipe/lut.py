@@ -1,5 +1,8 @@
 from sklearn.svm import SVC
 from sklearn.linear_model import Lasso, LinearRegression, LogisticRegression
+from sklearn.neighbors import KNeighborsClassifier
+from sklearn.naive_bayes import GaussianNB
+from sklearn.neural_network import MLPClassifier
 from xgboost.sklearn import XGBClassifier
 
 from pipe.img_feature import gen_pca, load_radiomics, load_volume
@@ -31,7 +34,10 @@ Model_LUT = {
     'xgboost': XGBClassifier,
     'lasso': Lasso,
     'linear': LinearRegression,
-    'logistic': LogisticRegression
+    'logistic': LogisticRegression,
+    'knn': KNeighborsClassifier,
+    'nb': GaussianNB,
+    'mlp': MLPClassifier
 }
 
 Metrics_LUT = {
